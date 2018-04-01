@@ -12,6 +12,7 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
 });
+
 app.post('/api/token/verify', verifyIdToken);
 
 app.listen(port);

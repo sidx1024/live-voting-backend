@@ -14,7 +14,8 @@ function verifyIdToken(req, res) {
 
   async function verify() {
     const { idToken } = req.body;
-
+    console.info("----------------------------------------------------------------------");
+    console.info(req.body);
     if(!idToken) {
       return res.json({
         status: "Failed",
