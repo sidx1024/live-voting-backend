@@ -18,7 +18,8 @@ function verifyIdToken(req, res) {
     if(!idToken) {
       return res.json({
         status: "Failed",
-        message: "Id token is missing"
+        message: "Id token is missing",
+        body: JSON.stringify(req.body)
       });
     }
 
