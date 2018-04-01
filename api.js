@@ -37,4 +37,4 @@ function verifyIdToken(req, res) {
   }
 }
 
-export {verifyIdToken};
+module.exports = {verifyIdToken};
