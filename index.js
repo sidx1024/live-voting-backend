@@ -6,8 +6,8 @@ const { verifyIdToken, jwtMiddleware } = require('./api');
 const { activateInterval } = require('./vote');
 
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const https = require('https').Server(app);
+const io = require('socket.io')(https);
 
 const port = process.env.PORT || 8080;
 
