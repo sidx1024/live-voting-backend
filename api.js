@@ -3,7 +3,8 @@ const {OAuth2Client} = require('google-auth-library');
 function verifyIdToken(req, res) {
   const CLIENT_ID = "881189081299-vlt4opk8p9ptobgivq84r6fbr63mebgs.apps.googleusercontent.com";
   const client = new OAuth2Client(CLIENT_ID);
-
+  console.info("-----------------------**---------------------------------------------");
+  console.info(req.body);
   verify().catch((err) => {
     res.status(401).json({
       status: "Failed",
@@ -25,7 +26,7 @@ function verifyIdToken(req, res) {
     }
 
     const ticket = await client.verifyIdToken({
-      idToken: token,
+      idToken: idToken,
       audience: CLIENT_ID
     });
     const payload = ticket.getPayload();
