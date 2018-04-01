@@ -7,7 +7,8 @@ function verifyIdToken(req, res) {
   verify().catch((err) => {
     res.status(401).json({
       status: "Failed",
-      message: "Token cannot be verified."
+      message: "Token cannot be verified.",
+      error: err.toString()
     });
   });
 
@@ -15,7 +16,7 @@ function verifyIdToken(req, res) {
     const { idToken } = req.body;
 
     if(!idToken) {
-      res.json({
+      return res.json({
         status: "Failed",
         message: "Id token is missing"
       });
@@ -33,7 +34,7 @@ function verifyIdToken(req, res) {
       message: "Token successfully verified."
     };
 
-    res.json(response);
+    return res.json(response);
   }
 }
 
