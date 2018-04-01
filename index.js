@@ -19,7 +19,6 @@ app.use(cors());
 app.post('/api/token/verify', verifyIdToken);
 
 app.get('/protected', jwtMiddleware, (req, res) => {
-  activateInterval();
   res.send({ message: 'You accessed a protected endpoint successfully.' });
 });
 
