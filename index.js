@@ -32,4 +32,4 @@ io.on('connection', (socket) => {
 
 activateInterval(io);
 
-http.listen(port);
+https.listen(port);
