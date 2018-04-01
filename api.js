@@ -15,7 +15,7 @@ function verifyIdToken(req, res) {
 
   async function verify() {
     const { idToken } = req.body;
-    
+
     if(!idToken) {
       return res.json({
         status: "Failed",
@@ -39,7 +39,7 @@ function verifyIdToken(req, res) {
     };
 
     createToken({...data, ...sub}, function (token) {
-      res.json({...response, ...token});
+      res.json({...response, token});
     });
   }
 }
