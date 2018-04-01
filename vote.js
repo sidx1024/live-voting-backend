@@ -6,7 +6,7 @@ let interval = 0;
 function setNextQueueItem(io) {
   queueIndex = (queueIndex + 1) % items.length;
   queue = items[queueIndex];
-  io.emit('broadcast-queue', { for: 'everyone' });
+  io.emit('broadcast-queue', { queue });
 }
 
 function activateInterval(io) {
