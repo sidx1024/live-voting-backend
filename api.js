@@ -15,6 +15,7 @@ function verifyIdToken(req, res) {
 
   async function verify() {
     const { idToken } = req.body;
+    
     if(!idToken) {
       return res.json({
         status: "Failed",
@@ -28,17 +29,17 @@ function verifyIdToken(req, res) {
     });
 
     const payload = ticket.getPayload();
-    const userid = payload['sub'];
+    const {email, name, picture, sub} = payload;
+    const data = {email, name, picture};
 
     const response = {
       status: "Success",
       message: "Token successfully verified.",
-      userid: userid,
-      payload: payload
+      data
     };
-    
-    createToken({a: 255, b: 64}, function (token) {
-      res.json(Object.assign(response, {token}));
+
+    createToken({...data, ...sub}, function (token) {
+      res.json({...response, ...token});
     });
   }
 }
